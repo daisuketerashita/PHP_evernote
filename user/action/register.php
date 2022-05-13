@@ -19,6 +19,12 @@
             $statement->bindParam(':name',htmlspecialchars($user_name));
             $statement->bindParam(':email',$user_email);
             $statement->bindParam(':password',$password);
+
+            //ユーザー情報保持
+            $_SESSION['user'] = [
+                'name' => $user_name,
+                'id' => $database_handler->lastInsertId()
+            ];
             // バリデーション
             $_SESSION['errors'] = [];
 
